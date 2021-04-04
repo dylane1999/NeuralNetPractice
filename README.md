@@ -26,7 +26,9 @@ Weight is the parameter within a neural network that transforms input data withi
 - Self.weights
 An array of n weights for n number of nodes in the neural network.  
 
-   b. What does the `reset_weights()` method do? (Note: this method uses python's list comprehension. Feel free to unpack it.)  
+b. What does the `reset_weights()` method do? (Note: this method uses python's list comprehension. Feel free to unpack it.)  
+- The reset weights method fills the self.weights array with n number of random weights for a given size n 
+
 c. Perhaps counterintuitively, we will start by writing the `test_example()` method. `test_example()` takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
    What is the equation for figuring out whether a data point is above threshold?  
    d. Fill in the code for `test_example()`  
