@@ -22,9 +22,13 @@ class Perceptron:
 
 
     def test_example(self, example): # STUDENT SOLUTION
+        pass
+
         # TODO
 
     def test_all(self, test_data, labels): # STUDENT SOLUTION
+        pass
+
         # TODO
 
 
