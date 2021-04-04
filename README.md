@@ -31,6 +31,8 @@ b. What does the `reset_weights()` method do? (Note: this method uses python's l
 
 c. Perhaps counterintuitively, we will start by writing the `test_example()` method. `test_example()` takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
    What is the equation for figuring out whether a data point is above threshold?  
+   - Output = 0 if weight*data point + bias < threshold
+   - Output = 1 if weight*data point + bias >= threshold
    d. Fill in the code for `test_example()`  
    e. To wrap up the testing code, fill in the `test_all()` method, which takes a list of data points and a corresponding list of labels.
    Yes, this is just a loop that calls `test_example()`. It should return the overall accuracy (i.e., correct/total)
