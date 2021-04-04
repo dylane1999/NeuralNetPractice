@@ -10,6 +10,22 @@ For any answers that don't involve editing a .py file, please edit this README d
     
 1. For the first part of this assignment, we will write a Perceptron class. To keep things simple, we will use a threshold unit.    
 a. Take a look at the starter code in Perceptron.py. What are the member variables? What does each do?  
+
+- self.threshold = threshold
+a perceptron takes in inputs, applies a linear combination, if the combination is greater or lesser than some threshold value, produces an ouput of 1 or 0 respectively. The Threshold is the number required to create the response of a 1
+
+- Self.learning_rate
+The learning rate is the parameter that alters how fast the model changes weights relative to the amount of training epochs. A learning rate that is too large can cause the model to converge too quickly to a suboptimal solution, whereas a learning rate that is too small can cause the process to get stuck.
+
+- Self.bias
+The bias value allows the activation function to be shifted to the left or right, to better fit the data. changes to the weights alter the steepness of the sigmoid curve, whilst the bias offsets it, shifting the entire curve so it fits better.
+
+- Self.default_weight
+Weight is the parameter within a neural network that transforms input data within the network's hidden layers. Inputs get multiplied by a weight value and the resulting output is either observed, or passed to the next layer in the neural network. This is the default weight for the nodes that is a random weight 0-1
+
+- Self.weights
+An array of n weights for n number of nodes in the neural network.  
+
    b. What does the `reset_weights()` method do? (Note: this method uses python's list comprehension. Feel free to unpack it.)  
 c. Perhaps counterintuitively, we will start by writing the `test_example()` method. `test_example()` takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
    What is the equation for figuring out whether a data point is above threshold?  
