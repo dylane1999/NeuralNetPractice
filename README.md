@@ -30,22 +30,32 @@ b. What does the `reset_weights()` method do? (Note: this method uses python's l
 - The reset weights method fills the self.weights array with n number of random weights for a given size n 
 
 c. Perhaps counterintuitively, we will start by writing the `test_example()` method. `test_example()` takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
+
    What is the equation for figuring out whether a data point is above threshold?  
    - Output = 0 if weight*data point + bias < threshold
    - Output = 1 if weight*data point + bias >= threshold
-   d. Fill in the code for `test_example()`  
+
+   d. Fill in the code for `test_example()`
+   
    e. To wrap up the testing code, fill in the `test_all()` method, which takes a list of data points and a corresponding list of labels.
-   Yes, this is just a loop that calls `test_example()`. It should return the overall accuracy (i.e., correct/total)
+        Yes, this is just a loop that calls `test_example()`. It should return the overall accuracy (i.e., correct/total)
+        
 f. We will first fill in the `train_all()` method, which takes a list of data points and a list of labels corresponding to the datapoints.
    What does the code that's filled out for you do? Why do we need it?  
+   
    g. For our `train_all()` method, we will update weights iteratively. In other words, we will update weights after each training example that requires an update.
    Given a training example, how do you know whether to update weights?  
+   
    h. What is the equation for updating weights, given a training example?  
+   
    i. For every training example passed into `train_all()`, we will need to check whether the weights need to be updated, then update them according to the equation above.
    Write the code to do so. You may reuse existing methods and add any helper methods you wish.  
+   
    j. We will use an accuracy of 1 to test for convergence. Write a loop around the above code that updates weights until convergence.
+   
 k. The `__main__` method in Perceptron.py includes data sets for logical "and", "or", "nand", and "nor". Test your perceptron on them (you may choose all input parameters). Does it always converge?
    (Hint: don't forget to reset weights if not instantiating a new perceptron for each)  
+   
 l. Why is using an accuracy of 1 a bad test of convergence in a general sense? What are some better alternatives?
    
 2. Documentation for pytorch can be found [here](https://pytorch.org/docs/stable/index.html). There are also many tutorial available [here](https://pytorch.org/tutorials/). We will focus on the [basics tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html). Use PyTorch_Playground.py.    
