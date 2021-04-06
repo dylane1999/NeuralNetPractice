@@ -44,6 +44,7 @@ c. Perhaps counterintuitively, we will start by writing the `test_example()` met
         
 f. We will first fill in the `train_all()` method, which takes a list of data points and a list of labels corresponding to the datapoints.
    What does the code that's filled out for you do? Why do we need it?  
+   
    - this code checks the length of weights and if it is not equal to the size of row 0 of the training data, then it fills it up with the random weights for size of row 0 of the training data. 
    
    g. For our `train_all()` method, we will update weights iteratively. In other words, we will update weights after each training example that requires an update.
@@ -59,8 +60,10 @@ f. We will first fill in the `train_all()` method, which takes a list of data po
    - new_weight = current_weight + learning_rate( actual - predicted )
    
    i. For every training example passed into `train_all()`, we will need to check whether the weights need to be updated, then update them according to the equation above.
-   Write the code to do so. You may reuse existing methods and add any helper methods you wish.  
+   Write the code to do so. You may reuse existing methods and add any helper methods you wish. 
    
+   - complete
+ 
    j. We will use an accuracy of 1 to test for convergence. Write a loop around the above code that updates weights until convergence.
    
 k. The `__main__` method in Perceptron.py includes data sets for logical "and", "or", "nand", and "nor". Test your perceptron on them (you may choose all input parameters). Does it always converge?

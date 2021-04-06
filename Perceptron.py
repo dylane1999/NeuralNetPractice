@@ -29,7 +29,7 @@ class Perceptron:
             perceptron_output = self.test_example(train_data[i], train_labels[i])
             if self.is_update_required(perceptron_output, train_labels[i]):
                 # if update required, update node
-                self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i]) 
+                self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i])
         return
 
 
