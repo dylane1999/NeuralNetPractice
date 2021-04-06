@@ -49,7 +49,14 @@ f. We will first fill in the `train_all()` method, which takes a list of data po
    g. For our `train_all()` method, we will update weights iteratively. In other words, we will update weights after each training example that requires an update.
    Given a training example, how do you know whether to update weights?  
    
+   We know when to update weights based upon the actual vs. predicted values. 
+   - If actual == predicted -> no change
+   - Predicted == 0 ->  increase weight
+   - Predicted == 1 ->  decrease weight
+
    h. What is the equation for updating weights, given a training example?  
+   
+   - new_weight = current_weight + learning_rate( actual - predicted )
    
    i. For every training example passed into `train_all()`, we will need to check whether the weights need to be updated, then update them according to the equation above.
    Write the code to do so. You may reuse existing methods and add any helper methods you wish.  
