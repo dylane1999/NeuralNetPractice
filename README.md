@@ -78,11 +78,21 @@ l. Why is using an accuracy of 1 a bad test of convergence in a general sense? W
    
 2. Documentation for pytorch can be found [here](https://pytorch.org/docs/stable/index.html). There are also many tutorial available [here](https://pytorch.org/tutorials/). We will focus on the [basics tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html). Use PyTorch_Playground.py.    
 a. The first section of the tutorial explains how data are represented in `pytorch`. Why is it important to start with data representation?  
-   b. Follow the instructions to download the FashionMNIST train and test data, and create DataLoader objects. Why do we need the DataLoader class? 
-   c. Next, move on to the "Creating Models" section of the tutorial. How many layers are in the neural network defined here? (Reminder: We touched upon the ReLU function very briefly in class.Think of it as an alternative to the sigmoid)  
-   d. Copy the code for the NeuralNetwork class into your PyTorch_Playground.py file. Run your code. Make sure you understand what it's doing.  
-   e. Now, it's time to define the training method. This is described in the "Optimizing the Model Parameters" section of the tutorial. Intuitively, why is optimization and training the same thing?  
-   f. How well does your model do on the FashionMNIST test set? If you increase the number of training epochs to 10, does it improve?    
-   f. Follow the "Save Models" instructions to save your model to a file called "model.pth". Include it in your submission.  
-   g. Pick a different [vision dataset](https://pytorch.org/vision/stable/index.html). Create only a _test_ set from this dataset, and test your model. How well does it perform?  
-   h. Now create a training set from your new dataset. Train and test and new model (don't worry about changing the network architecture). Are the results different? Save your new model to "model2.pth" and include in your submission.
+
+ - Starting with a data representation is important because it informs how we will actually work with our model, also tensors can run on GPUs or other specialized hardware to accelerate computing.
+ 
+b. Follow the instructions to download the FashionMNIST train and test data, and create DataLoader objects. Why do we need the DataLoader class? 
+
+c. Next, move on to the "Creating Models" section of the tutorial. How many layers are in the neural network defined here? (Reminder: We touched upon the ReLU function very briefly in class.Think of it as an alternative to the sigmoid)  
+
+d. Copy the code for the NeuralNetwork class into your PyTorch_Playground.py file. Run your code. Make sure you understand what it's doing.  
+
+e. Now, it's time to define the training method. This is described in the "Optimizing the Model Parameters" section of the tutorial. Intuitively, why is optimization and training the same thing?  
+
+f. How well does your model do on the FashionMNIST test set? If you increase the number of training epochs to 10, does it improve?    
+
+f. Follow the "Save Models" instructions to save your model to a file called "model.pth". Include it in your submission.  
+
+g. Pick a different [vision dataset](https://pytorch.org/vision/stable/index.html). Create only a _test_ set from this dataset, and test your model. How well does it perform?  
+
+h. Now create a training set from your new dataset. Train and test and new model (don't worry about changing the network architecture). Are the results different? Save your new model to "model2.pth" and include in your submission.
