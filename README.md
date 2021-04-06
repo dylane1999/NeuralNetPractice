@@ -95,7 +95,11 @@ d. Copy the code for the NeuralNetwork class into your PyTorch_Playground.py fil
 
 e. Now, it's time to define the training method. This is described in the "Optimizing the Model Parameters" section of the tutorial. Intuitively, why is optimization and training the same thing?  
 
+ - Optimization is the same thing as training, because you are optimizing the weights and params of your model to give a correct answer a larger % of the time 
+
 f. How well does your model do on the FashionMNIST test set? If you increase the number of training epochs to 10, does it improve?    
+
+ - The model started at  Accuracy: 42.5%, Avg loss: 0.034630, and after 5 epochs, it had reached Accuracy: 59.6%, Avg loss: 0.021673. When i let it run for 10 epochs, it got to Accuracy: 70.1%, Avg loss: 0.012564 
 
 f. Follow the "Save Models" instructions to save your model to a file called "model.pth". Include it in your submission.  
 
