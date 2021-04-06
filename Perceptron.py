@@ -14,11 +14,39 @@ class Perceptron:
         self.weights = [self.default_weight if self.default_weight is not None else random.random() for i in (range(size+1))]
 
     def train_all(self, train_data, train_labels): # STUDENT SOLUTION
+        '''
+        train all nodes that need to be trained after going through the data
+        :param train_data:
+        :param train_labels:
+        :return:
+        '''
+        all_nodes = { k:0 for k in range(len(self.weights)) }
         # set initial weight
         if len(self.weights) != len(train_data[0]):
             self.reset_weights(len(train_data[0]))
+        # iteratively update weights
+        for i in range(len(train_data)):
+            perceptron_output = self.test_example(train_data[i], train_labels[i])
+            if self.is_update_required(perceptron_output, train_labels[i]):
+                # if update required, update node
+                self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i]) 
+        return
 
-        # TODO
+
+    def is_update_required(self, perceptron_output, label):
+        if perceptron_output == label:
+            return False
+        return True
+
+    def update_weight(self, perceptron_output, current_weight, expected_output):
+        new_weight = current_weight + self.learning_rate*(perceptron_output - expected_output)
+        return new_weight
+
+    def get_opposite(self, value):
+        if value == 1:
+            return 0
+        elif value == 0:
+            return 1
 
 
     def test_example(self, data, label): # STUDENT SOLUTION
