@@ -21,13 +21,40 @@ class Perceptron:
         # TODO
 
 
-    def test_example(self, example): # STUDENT SOLUTION
-        pass
+    def test_example(self, data, label): # STUDENT SOLUTION
+        '''
+        takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
+        :param example:
+        :return:  returns 1 if the perceptron's output is above threshold, 0 otherwise.
+        '''
+        weighted_sum = 0
+        for i in range(len(self.weights)):
+            weighted_sum += data[i] * self.weights[i]  # get the weighted sum
 
-        # TODO
+        weighted_sum + self.bias  # add the bias
+        if weighted_sum > self.threshold:
+            return 1
+        return 0
 
     def test_all(self, test_data, labels): # STUDENT SOLUTION
-        pass
+        '''
+        test all data in test_data
+        :param test_data:
+        :param labels:
+        :return: the overall accuracy (i.e., correct/total)
+        '''
+        total_outputs = len(test_data)
+        correct_outputs = 0
+        for i in range(len(test_data)):
+            output = self.test_example(test_data[i], labels[i])
+            if output == labels[i]:
+                correct_outputs += 1
+        accuracy = correct_outputs / total_outputs
+        return accuracy
+
+
+
+# pass
 
         # TODO
 
