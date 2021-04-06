@@ -71,7 +71,10 @@ f. We will first fill in the `train_all()` method, which takes a list of data po
 k. The `__main__` method in Perceptron.py includes data sets for logical "and", "or", "nand", and "nor". Test your perceptron on them (you may choose all input parameters). Does it always converge?
    (Hint: don't forget to reset weights if not instantiating a new perceptron for each)  
    
+  - The accuracy does not always converge to 100, but by altering the learning rate, bias, etc. I was able to make it converge more often. 
+  
 l. Why is using an accuracy of 1 a bad test of convergence in a general sense? What are some better alternatives?
+  - Accuracy of 1 is not the a great etst because it means that the model must have 100% accuracy which is not always a realistic goal in the real world. I think a better goal would be 80-90% range
    
 2. Documentation for pytorch can be found [here](https://pytorch.org/docs/stable/index.html). There are also many tutorial available [here](https://pytorch.org/tutorials/). We will focus on the [basics tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html). Use PyTorch_Playground.py.    
 a. The first section of the tutorial explains how data are represented in `pytorch`. Why is it important to start with data representation?  
