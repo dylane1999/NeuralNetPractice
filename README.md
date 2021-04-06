@@ -66,6 +66,8 @@ f. We will first fill in the `train_all()` method, which takes a list of data po
  
    j. We will use an accuracy of 1 to test for convergence. Write a loop around the above code that updates weights until convergence.
    
+   - complete
+   
 k. The `__main__` method in Perceptron.py includes data sets for logical "and", "or", "nand", and "nor". Test your perceptron on them (you may choose all input parameters). Does it always converge?
    (Hint: don't forget to reset weights if not instantiating a new perceptron for each)  
    

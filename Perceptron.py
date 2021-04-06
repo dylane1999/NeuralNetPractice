@@ -20,16 +20,16 @@ class Perceptron:
         :param train_labels:
         :return:
         '''
-        all_nodes = { k:0 for k in range(len(self.weights)) }
         # set initial weight
         if len(self.weights) != len(train_data[0]):
             self.reset_weights(len(train_data[0]))
-        # iteratively update weights
-        for i in range(len(train_data)):
-            perceptron_output = self.test_example(train_data[i], train_labels[i])
-            if self.is_update_required(perceptron_output, train_labels[i]):
-                # if update required, update node
-                self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i])
+        while self.test_all(train_data, train_labels) != 1:
+            # iteratively update weights
+            for i in range(len(train_data)):
+                perceptron_output = self.test_example(train_data[i], train_labels[i])
+                if self.is_update_required(perceptron_output, train_labels[i]):
+                    # if update required, update node
+                    self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i])
         return
 
 
