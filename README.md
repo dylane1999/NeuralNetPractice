@@ -83,6 +83,8 @@ a. The first section of the tutorial explains how data are represented in `pytor
  
 b. Follow the instructions to download the FashionMNIST train and test data, and create DataLoader objects. Why do we need the DataLoader class? 
 
+ - We want to use a data loader because while training a model, we pass sampokes in small batches and reshuffle the data to prevent overfitting, the data loader api does this for us. 
+
 c. Next, move on to the "Creating Models" section of the tutorial. How many layers are in the neural network defined here? (Reminder: We touched upon the ReLU function very briefly in class.Think of it as an alternative to the sigmoid)  
 
 d. Copy the code for the NeuralNetwork class into your PyTorch_Playground.py file. Run your code. Make sure you understand what it's doing.  
