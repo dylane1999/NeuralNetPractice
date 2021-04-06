@@ -21,15 +21,20 @@ class Perceptron:
         :return:
         '''
         # set initial weight
+
+
+        x = len(train_data[0])
         if len(self.weights) != len(train_data[0]):
             self.reset_weights(len(train_data[0]))
+        print(self.test_all(train_data, train_labels))
         while self.test_all(train_data, train_labels) != 1:
+            print( self.test_all(train_data, train_labels))
             # iteratively update weights
             for i in range(len(train_data)):
                 perceptron_output = self.test_example(train_data[i], train_labels[i])
                 if self.is_update_required(perceptron_output, train_labels[i]):
                     # if update required, update node
-                    self.weights[i] = self.update_weight(perceptron_output, self.weights[i], train_labels[i])
+                    self.weights = self.update_weight(perceptron_output, train_labels[i])  # update weights
         return
 
 
@@ -38,9 +43,11 @@ class Perceptron:
             return False
         return True
 
-    def update_weight(self, perceptron_output, current_weight, expected_output):
-        new_weight = current_weight + self.learning_rate*(perceptron_output - expected_output)
-        return new_weight
+    def update_weight(self, perceptron_output, expected_output):
+        new_weights = []
+        for weight in self.weights:
+            new_weights.append(weight + self.learning_rate*(expected_output - perceptron_output))
+        return new_weights
 
     def get_opposite(self, value):
         if value == 1:
@@ -51,15 +58,14 @@ class Perceptron:
 
     def test_example(self, data, label): # STUDENT SOLUTION
         '''
-        takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
+        takes a data point and a label, and returns 1 if the perceptron's output is above threshold, 0 otherwise.
         :param example:
         :return:  returns 1 if the perceptron's output is above threshold, 0 otherwise.
         '''
         weighted_sum = 0
         for i in range(len(data)):
             weighted_sum += data[i] * self.weights[i]  # get the weighted sum
-
-        weighted_sum + self.bias  # add the bias
+        weighted_sum += self.bias  # add the bias
         if weighted_sum > self.threshold:
             return 1
         return 0
@@ -89,7 +95,7 @@ class Perceptron:
 
 if __name__ == '__main__':
     threshold = 1
-    learning_rate = .6
+    learning_rate = .2
     bias = .4
     perceptron = Perceptron(threshold, learning_rate, bias)
     binary_data = [[0,0], [0,1], [1,1], [1,0]]
@@ -97,8 +103,28 @@ if __name__ == '__main__':
     or_labels = [0, 1, 1, 1]
     nor_labels = [1, 0, 0, 0]
     nand_labels = [1, 1, 0, 1]
-    perceptron.train_all(binary_data, and_labels)
+
+    x = perceptron.train_all(binary_data, and_labels)
     print(perceptron.weights)
     print(perceptron.test_all(binary_data, and_labels))
-    print(perceptron.weights)
 
+
+    # and_perceptron = Perceptron(threshold, learning_rate, bias)
+    # and_perceptron.train_all(binary_data, and_labels)
+    # print(and_perceptron.weights)
+    # print(and_perceptron.test_all(binary_data, and_labels))
+    #
+    # or_perceptron = Perceptron(threshold, learning_rate, bias)
+    # or_perceptron.train_all(binary_data, or_labels)
+    # print(or_perceptron.weights)
+    # print(or_perceptron.test_all(binary_data, or_labels))
+    #
+    # nor_perceptron = Perceptron(threshold, learning_rate, bias)
+    # nor_perceptron.train_all(binary_data, nor_labels)
+    # print(nor_perceptron.weights)
+    # print(nor_perceptron.test_all(binary_data, nor_labels))
+    #
+    # and_perceptron = Perceptron(threshold, learning_rate, bias)
+    # and_perceptron.train_all(binary_data, and_labels)
+    # print(and_perceptron.weights)
+    # print(and_perceptron.test_all(binary_data, and_labels))
