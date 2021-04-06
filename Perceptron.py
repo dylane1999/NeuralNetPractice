@@ -56,7 +56,7 @@ class Perceptron:
         :return:  returns 1 if the perceptron's output is above threshold, 0 otherwise.
         '''
         weighted_sum = 0
-        for i in range(len(self.weights)):
+        for i in range(len(data)):
             weighted_sum += data[i] * self.weights[i]  # get the weighted sum
 
         weighted_sum + self.bias  # add the bias
@@ -88,10 +88,17 @@ class Perceptron:
 
 
 if __name__ == '__main__':
+    threshold = 1
+    learning_rate = .6
+    bias = .4
+    perceptron = Perceptron(threshold, learning_rate, bias)
     binary_data = [[0,0], [0,1], [1,1], [1,0]]
     and_labels = [0, 0, 1, 0]
     or_labels = [0, 1, 1, 1]
     nor_labels = [1, 0, 0, 0]
     nand_labels = [1, 1, 0, 1]
+    perceptron.train_all(binary_data, and_labels)
+    print(perceptron.weights)
+    print(perceptron.test_all(binary_data, and_labels))
+    print(perceptron.weights)
 
-    
