@@ -87,9 +87,11 @@ b. Follow the instructions to download the FashionMNIST train and test data, and
 
 c. Next, move on to the "Creating Models" section of the tutorial. How many layers are in the neural network defined here? (Reminder: We touched upon the ReLU function very briefly in class.Think of it as an alternative to the sigmoid)  
 
-- There are 6 different layers defined in this model
+ - There are 7 different layers defined in this model, first the flatten layer, then the sequential relu stack of 6. 
 
 d. Copy the code for the NeuralNetwork class into your PyTorch_Playground.py file. Run your code. Make sure you understand what it's doing.  
+
+ - complete
 
 e. Now, it's time to define the training method. This is described in the "Optimizing the Model Parameters" section of the tutorial. Intuitively, why is optimization and training the same thing?  
 

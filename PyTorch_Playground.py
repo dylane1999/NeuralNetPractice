@@ -41,21 +41,3 @@ if __name__ == '__main__':
 
     train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
     test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
-
-    train_features, train_labels = next(iter(train_dataloader))
-    print(f"Feature batch shape: {train_features.size()}")
-    print(f"Labels batch shape: {train_labels.size()}")
-    img = train_features[0].squeeze()
-    label = train_labels[7]
-    print(f"Label: {label}")
-
-    # device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    # # print('Using {} device'.format(device))
-    # model = NeuralNetwork().to(device)
-    # # print(model)
-    #
-    # X = torch.rand(1, 28, 28, device=device)
-    # logits = model(X)
-    # pred_probab = nn.Softmax(dim=1)(logits)
-    # y_pred = pred_probab.argmax(1)
-    # print(f"Predicted class: {y_pred}")
