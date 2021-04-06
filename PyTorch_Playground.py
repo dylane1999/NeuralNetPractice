@@ -24,6 +24,25 @@ class NeuralNetwork(nn.Module):
         return logits
 
 
+class CelebFacesNeuralNetwork(nn.Module):
+    def __init__(self):
+        super(CelebFacesNeuralNetwork, self).__init__()
+        self.flatten = nn.Flatten()
+        self.linear_relu_stack = nn.Sequential(
+            nn.Linear(178*218, 512),
+            nn.ReLU(),
+            nn.Linear(512, 512),
+            nn.ReLU(),
+            nn.Linear(512, 10),
+            nn.ReLU()
+        )
+
+    def forward(self, x):
+        x = self.flatten(x)
+        logits = self.linear_relu_stack(x)
+        return logits
+
+
 def train_loop(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     for batch, (X, y) in enumerate(dataloader):
@@ -54,7 +73,7 @@ def test_loop(dataloader, model, loss_fn):
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 
-if __name__ == '__main__':
+def model_example():
     model = NeuralNetwork()
 
     training_data = datasets.FashionMNIST(
@@ -86,6 +105,55 @@ if __name__ == '__main__':
         train_loop(train_dataloader, model, loss_fn, optimizer)
         test_loop(test_dataloader, model, loss_fn)
     print("Done!")
+
+    torch.save(model.state_dict(), 'model.pth')
+
+
+def Celeb_faces_model():
+    model = CelebFacesNeuralNetwork()
+
+    training_data = datasets.CelebA(
+        root="data",
+        split="train",
+        download=True,
+        transform=ToTensor()
+    )
+
+    test_data = datasets.CelebA(
+        root="data",
+        split="test",
+        download=True,
+        transform=ToTensor()
+    )
+
+    learning_rate = 1e-3  # how much to update models parameters at each batch/epoch
+    batch_size = 64   # the number of data samples seen by the model in each epoch
+    epochs = 5  # each iteration of the optimization loop is called an epoch.
+
+    train_dataloader = DataLoader(training_data, batch_size=batch_size, shuffle=True)
+    test_dataloader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
+
+    loss_fn = nn.CrossEntropyLoss()
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+
+    for t in range(epochs):
+        print(f"Epoch {t + 1}\n-------------------------------")
+        # train_loop(train_dataloader, model, loss_fn, optimizer)
+        test_loop(test_dataloader, model, loss_fn)
+    print("Done!")
+
+
+if __name__ == '__main__':
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print("Using {} device".format(device))
+
+    # model_example()
+    Celeb_faces_model()
+
+
+
+
+
 
 
 
