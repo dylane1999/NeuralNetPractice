@@ -40,7 +40,7 @@ c. Perhaps counterintuitively, we will start by writing the `test_example()` met
    
    e. To wrap up the testing code, fill in the `test_all()` method, which takes a list of data points and a corresponding list of labels.
         Yes, this is just a loop that calls `test_example()`. It should return the overall accuracy (i.e., correct/total)
-        - complete
+   - complete
         
 f. We will first fill in the `train_all()` method, which takes a list of data points and a list of labels corresponding to the datapoints.
    What does the code that's filled out for you do? Why do we need it?  
