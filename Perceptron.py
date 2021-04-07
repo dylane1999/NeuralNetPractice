@@ -21,9 +21,6 @@ class Perceptron:
         :return:
         '''
         # set initial weight
-
-
-        x = len(train_data[0])
         if len(self.weights) != len(train_data[0]):
             self.reset_weights(len(train_data[0]))
         print(self.test_all(train_data, train_labels))
@@ -64,8 +61,8 @@ class Perceptron:
         '''
         weighted_sum = 0
         for i in range(len(data)):
-            weighted_sum += data[i] * self.weights[i]  # get the weighted sum
-        weighted_sum += self.bias  # add the bias
+            weighted_sum += data[i] * self.weights[i+1]  # get the weighted sum
+        weighted_sum += self.bias * self.weights[0]  # add the bias
         if weighted_sum > self.threshold:
             return 1
         return 0

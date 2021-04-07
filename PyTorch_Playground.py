@@ -29,7 +29,7 @@ class CelebFacesNeuralNetwork(nn.Module):
         super(CelebFacesNeuralNetwork, self).__init__()
         self.flatten = nn.Flatten()
         self.linear_relu_stack = nn.Sequential(
-            nn.Linear(178*218, 512),
+            nn.Linear(16*16, 512),
             nn.ReLU(),
             nn.Linear(512, 512),
             nn.ReLU(),
@@ -109,26 +109,29 @@ def model_example():
     torch.save(model.state_dict(), 'model.pth')
 
 
-def Celeb_faces_model():
+def celeb_faces_model():
     model = CelebFacesNeuralNetwork()
 
-    training_data = datasets.CelebA(
+    training_data = datasets.USPS(
         root="data",
-        split="train",
+        train=True,
         download=True,
         transform=ToTensor()
     )
 
-    test_data = datasets.CelebA(
+    test_data = datasets.USPS(
         root="data",
-        split="test",
+        train=False,
         download=True,
         transform=ToTensor()
     )
+
+    img, tar = training_data.__getitem__(1)
+    print(img.size())
 
     learning_rate = 1e-3  # how much to update models parameters at each batch/epoch
     batch_size = 64   # the number of data samples seen by the model in each epoch
-    epochs = 5  # each iteration of the optimization loop is called an epoch.
+    epochs = 10  # each iteration of the optimization loop is called an epoch.
 
     train_dataloader = DataLoader(training_data, batch_size=batch_size, shuffle=True)
     test_dataloader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
@@ -138,7 +141,7 @@ def Celeb_faces_model():
 
     for t in range(epochs):
         print(f"Epoch {t + 1}\n-------------------------------")
-        # train_loop(train_dataloader, model, loss_fn, optimizer)
+        train_loop(train_dataloader, model, loss_fn, optimizer)
         test_loop(test_dataloader, model, loss_fn)
     print("Done!")
 
@@ -148,7 +151,7 @@ if __name__ == '__main__':
     print("Using {} device".format(device))
 
     # model_example()
-    Celeb_faces_model()
+    celeb_faces_model()
 
 
 

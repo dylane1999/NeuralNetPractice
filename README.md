@@ -103,6 +103,12 @@ f. How well does your model do on the FashionMNIST test set? If you increase the
 
 f. Follow the "Save Models" instructions to save your model to a file called "model.pth". Include it in your submission.  
 
+ - complete
+
 g. Pick a different [vision dataset](https://pytorch.org/vision/stable/index.html). Create only a _test_ set from this dataset, and test your model. How well does it perform?  
 
+ - the test set alone does not perform well. I used the USPS set, and since there was no training, the model performed at the same rate everytime, which was 13.6% accuracy. 
+
 h. Now create a training set from your new dataset. Train and test and new model (don't worry about changing the network architecture). Are the results different? Save your new model to "model2.pth" and include in your submission.
+
+ - Yes, the results were better, because as each loop occured, the model would be trained. This resulted in improvement each time, until the final loop where it reached an accuracy of 25% after 10 epochs of training. 
