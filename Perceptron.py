@@ -1,6 +1,7 @@
 import random
 
 class Perceptron:
+    
 
     def __init__(self, threshold, learning_rate, bias, default_weight=None):
         # assumes labels for all data are [0 if <thresh,1 if >= thresh]
