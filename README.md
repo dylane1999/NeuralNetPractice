@@ -27,7 +27,7 @@ Weight is the parameter within a neural network that transforms input data withi
 An array of n weights for n number of nodes in the neural network.  
 
 b. What does the `reset_weights()` method do? (Note: this method uses python's list comprehension. Feel free to unpack it.)  
-- The reset weights method fills the self.weights array with n number of random weights for a given size n 
+- The reset weights method fills the self.weights array with n number of random weights for a given size n if the default weight is none, if there is a default weight then it sets the array to an array with n default weights.
 
 c. Perhaps counterintuitively, we will start by writing the `test_example()` method. `test_example()` takes a data point and a label, and returns 1 if the perceptron's output is obove threshold, 0 otherwise.
 
@@ -46,6 +46,7 @@ f. We will first fill in the `train_all()` method, which takes a list of data po
    What does the code that's filled out for you do? Why do we need it?  
    
    - this code checks the length of weights and if it is not equal to the size of row 0 of the training data, then it fills it up with the random weights for size of row 0 of the training data. 
+   The reason that we need this code is that we need to have weights to start with in order to train the model, the process of training finds the weights that solve the problem best, so we must start with random or default weights at the beginning.
    
    g. For our `train_all()` method, we will update weights iteratively. In other words, we will update weights after each training example that requires an update.
    Given a training example, how do you know whether to update weights?  
@@ -74,7 +75,8 @@ k. The `__main__` method in Perceptron.py includes data sets for logical "and", 
   - The accuracy does not always converge to 100, but by altering the learning rate, bias, etc. I was able to make it converge more often. 
   
 l. Why is using an accuracy of 1 a bad test of convergence in a general sense? What are some better alternatives?
-  - Accuracy of 1 is not the a great etst because it means that the model must have 100% accuracy which is not always a realistic goal in the real world. I think a better goal would be 80-90% range
+  - Accuracy of 1 is not the a great test because it means that the model must have 100% accuracy which is not always a realistic goal in the real world. I think a better goal would be 80-90% range.
+  It is not realistic because the machine will be over fitted to this data, if the machine has 100% accuracy it may be that it is not trained to recognize images in general for example, but instead the images specifically in the training set. 
    
 2. Documentation for pytorch can be found [here](https://pytorch.org/docs/stable/index.html). There are also many tutorial available [here](https://pytorch.org/tutorials/). We will focus on the [basics tutorial](https://pytorch.org/tutorials/beginner/basics/intro.html). Use PyTorch_Playground.py.    
 a. The first section of the tutorial explains how data are represented in `pytorch`. Why is it important to start with data representation?  
